@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content>
+	<config>
+		<parameter id="streaming_connection" value="rtmp://sgvvi6rjmw4fe.cloudfront.net/cfx/st/" />
+		<parameter id="progressive_server" value="http://localhost/fingereleven.com/server/trunk/" />
+	</config>
+	<playlist>
+		<item>
+			<audio type="progressive" src="test/track1.mp3" length="205008" />
+			<title><![CDATA[A Title (playlist length)]]></title>
+			<artist><![CDATA[An Artist]]></artist>
+			<extension>
+				<albumart value="" />
+			</extension>
+			<config>
+				<parameter id="progressive_server" value="" />
+			</config>
+		</item>
+		
+		<item>
+			<audio type="streaming" src="fingereleven/audio/Living_in_a_Dream" />
+			<title><![CDATA[LIVING IN A DREAM]]></title>
+			<artist><![CDATA[Finger Eleven]]></artist>
+			<extension>
+				<albumart id="" value="" />
+			</extension>
+		</item>
+		
+		<item>
+			<audio type="streaming" src="fingereleven/audio/Stone_Soul" />
+			<title><![CDATA[STONE SOUL]]></title>
+			<artist><![CDATA[Finger Eleven]]></artist>
+			<extension>
+				<albumart value="" />
+			</extension>
+		</item>
+		
+		<item>
+			<audio type="streaming" src="fingereleven/audio/Whatever_Doesnt_Kill_Me" />
+			<title><![CDATA[WHATEVER DOESN'T KILL ME]]></title>
+			<artist><![CDATA[Finger Eleven]]></artist>
+			<extension>
+				<albumart value="" />
+			</extension>
+		</item>
+		
+		<item>
+			<audio type="streaming" src="fingereleven/audio/paralyzer" />
+			<title><![CDATA[PARALYZER]]></title>
+			<artist><![CDATA[Finger Eleven]]></artist>
+			<extension>
+				<albumart value="" />
+			</extension>
+		</item>
+		
+	</playlist>
+	<extension>
+		<buylink>
+			<img src="" />
+			<link href="" />
+		</buylink>
+	</extension>
+</content>

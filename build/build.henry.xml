@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="fingereleven.com:Henry" default="debug" basedir="..">
+	<description></description>
+	
+	<property file="${basedir}/build/build.henry.properties" />
+	<property name="dir.bin" value="${basedir}/../../server/trunk/"/>
+	<property name="run.url" value="http://localhost/fingereleven.com/server/trunk/"/>
+	
+	<property name="stage.framerate" value="31" />
+	<property name="stage.bgcolor" value="0x0" />
+	<property name="stage.width" value="500" />
+	<property name="stage.height" value="500" />
+	
+	<target name="debug">
+		<exec executable="${exec.mxmlc}">
+			<arg line="-target-player=10.0.0" />
+			<arg line="-source-path '${dir.src}'" />
+			<arg line="-source-path+='${dir.ext}'" />
+			<arg line="-library-path '${dir.flex41.libs}'"/>
+			<arg line="-default-frame-rate=${stage.framerate}" />
+			<arg line="-default-background-color=${stage.bgcolor}" />
+			<arg line="-default-size ${stage.width} ${stage.height}" />
+			<arg line="-static-link-runtime-shared-libraries" />
+			<arg line="-strict=true" />
+			<arg line="-debug=true" />
+			<arg line="-define=CONFIG::DEBUG,true" />
+			<arg line="-define+=CONFIG::RELEASE,false" />
+			
+			<arg line="'${dir.src}/com/heycanvas/audio/AudioPlayer.as'" />
+			<arg line="-output '${dir.bin}/swf/audioplayer.swf'" />
+			
+			<arg line="-frame main com.heycanvas.audio.initial.StartupAction" />
+		</exec>
+		<exec executable="${run.browser}" spawn="true">
+			<arg line="${run.url}" />
+		</exec>
+	</target>
+	
+	<target name="compile">
+		<exec executable="${exec.mxmlc}">
+			<arg line="-target-player=10.0.0" />
+			<arg line="-source-path '${dir.src}'" />
+			<arg line="-source-path+='${dir.ext}'" />
+			<arg line="-library-path '${dir.flex41.libs}'"/>
+			<arg line="-default-frame-rate=${stage.framerate}" />
+			<arg line="-default-background-color=${stage.bgcolor}" />
+			<arg line="-default-size ${stage.width} ${stage.height}" />
+			<arg line="-static-link-runtime-shared-libraries" />
+			<arg line="-strict=true" />
+			<arg line="-define=CONFIG::DEBUG,false" />
+			<arg line="-define+=CONFIG::RELEASE,true" />
+			
+			<arg line="'${dir.src}/com/heycanvas/audio/AudioPlayer.as'" />
+			<arg line="-output '${dir.bin}/swf/audioplayer.swf'" />
+			
+			<arg line="-frame main com.heycanvas.audio.initial.StartupAction" />
+		</exec>
+	</target>
+		
+	<target name="generate.documentation">
+		<delete includeemptydirs="true">
+			<fileset dir="${dir.docs}" includes="**/*" />
+		</delete>
+		<exec executable="${exec.asdoc}">
+			<arg line="-target-player=10.0.0" />
+			<arg line="-source-path+='${dir.ext}'" />
+			<arg line="-doc-sources '${dir.src}'" />
+			<arg line="-output '${dir.docs}'" />
+			<arg line="-main-title 'documentationmain'" />
+			<arg line="-window-title 'documentationwin'" />
+			<arg line="-library-path '${dir.libs}'"/>
+			<arg line="-define=CONFIG::DEBUG,false" />
+			<arg line="-define+=CONFIG::RELEASE,true" />
+		</exec>
+	</target>
+	
+	<target name="clean">
+		<delete file="${dir.bin}/swf/audioplayer.swf"/>
+	</target>
+</project>
